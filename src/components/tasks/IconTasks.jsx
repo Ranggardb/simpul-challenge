@@ -1,7 +1,9 @@
 import React from 'react';
 import { Popover } from '@headlessui/react';
-import { icon } from '../../assets/asset-lists';
+import { AppIcon } from '../../assets/asset-lists';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectAllTask } from '../../app/slices/taskSlice';
+
 import {
   selectMenuIsInboxOpen,
   selectMenuIsTaskOpen,
@@ -9,11 +11,13 @@ import {
   setIsTaskOpen,
 } from '../../app/slices/menuSlice';
 import LoadingSpin from '../LoadingSpin';
-import SearchBar from '../SearchBar';
-import MenuTask from './MenuTask';
+import HeaderTask from './HeaderTask';
+import TodoListsTask from './TodoListsTask';
 
 function IconTasks() {
   const dispatch = useDispatch();
+  const todoLists = useSelector(selectAllTask);
+  // const todoLists = [];
 
   const isTaskOpen = useSelector(selectMenuIsTaskOpen);
   const isInboxOpen = useSelector(selectMenuIsInboxOpen);
@@ -33,12 +37,14 @@ function IconTasks() {
         return (
           <>
             <Popover.Panel className="absolute bottom-[89px] right-0">
-              <div className=" bg-white rounded-md w-[80vw] h-[60vh] lg:w-[35vw] lg:h-[60vh] 2xl:w-[734px] 2xl:h-[737px] grid justify-items-stretch py-6 px-8">
-                <div className="justify-self-start min-w-[289px]">
-                  <MenuTask />
-                </div>
-                <div className="content-center">
-                  <LoadingSpin name="tasks" />
+              <div className="bg-white rounded-md w-[80vw] h-[60vh] lg:w-[35vw] lg:h-[60vh] 2xl:w-[734px] 2xl:h-[737px] flex flex-col py-6 pl-[32px] pr-[13px]">
+                <HeaderTask />
+                <div className="overflow-y-scroll  styled-scrollbar">
+                  {todoLists.length ? (
+                    <TodoListsTask todoLists={todoLists} />
+                  ) : (
+                    <LoadingSpin name="tasks" />
+                  )}
                 </div>
               </div>
             </Popover.Panel>
@@ -46,7 +52,7 @@ function IconTasks() {
               {open ? (
                 <div className="flex relative">
                   <div className="w-[68px] h-[68px] absolute right-[16px] bg-primary-gray-dark rounded-full"></div>
-                  <img className="self-end z-10" src={icon.taskInverse} />
+                  <img className="self-end z-30" src={AppIcon.taskInverse} />
                 </div>
               ) : (
                 <div className="flex flex-col items-stretch">
@@ -55,7 +61,7 @@ function IconTasks() {
                       Task
                     </h2>
                   )}
-                  <img className="self-end" src={icon.task} />
+                  <img className="self-end" src={AppIcon.task} />
                 </div>
               )}
             </Popover.Button>

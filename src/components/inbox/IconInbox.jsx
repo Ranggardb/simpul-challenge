@@ -1,6 +1,6 @@
 import React from 'react';
 import { Popover } from '@headlessui/react';
-import { icon } from '../../assets/asset-lists';
+import { AppIcon } from '../../assets/asset-lists';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectMenuIsInboxOpen,
@@ -43,7 +43,7 @@ function IconInbox() {
               {open ? (
                 <div className="flex relative">
                   <div className="w-[68px] h-[68px] absolute right-[16px] bg-primary-gray-dark rounded-full"></div>
-                  <img className="self-end z-10" src={icon.inboxInverse} />
+                  <img className="self-end z-10" src={AppIcon.inboxInverse} />
                 </div>
               ) : (
                 <div className="flex flex-col items-stretch">
@@ -52,7 +52,7 @@ function IconInbox() {
                       Inbox
                     </h2>
                   )}
-                  <img className="self-end" src={icon.inbox} />
+                  <img className="self-end" src={AppIcon.inbox} />
                 </div>
               )}
             </Popover.Button>

@@ -1,14 +1,16 @@
 import React from 'react';
-import { image } from '../assets/asset-lists';
+import { AppImage } from '../assets/asset-lists';
 
-function LoadingSpin({ name }) {
+function LoadingSpin({ name, className }) {
   return (
-    <>
-      <img className="animate-spin" src={image.loadingSpinner} />
-      <div className="text-bold-14 text-primary-gray-dark capitalize">
+    <div className="w-full flex flex-col items-center">
+      <img className="animate-spin" src={AppImage.loadingSpinner} />
+      <p
+        className={`text-bold-14 text-primary-gray-dark capitalize ${className}`}
+      >
         Loading {name}...
-      </div>
-    </>
+      </p>
+    </div>
   );
 }
 

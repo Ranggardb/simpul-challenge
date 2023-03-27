@@ -4,20 +4,26 @@ import task from './icon-task.svg';
 import taskInverse from './icon-task-inverse.svg';
 import quicks from './icon-quicks.svg';
 import search from './icon-search.svg';
+import options from './icon-options.svg';
+import date from './icon-date.svg';
+import edit from './icon-edit.svg';
 
 import loadingSpinner from './loading-spinner.svg';
 
-const icon = {
+const AppIcon = {
   quicks,
   inbox,
   inboxInverse,
   task,
   taskInverse,
   search,
+  options,
+  date,
+  edit,
 };
 
-const image = {
+const AppImage = {
   loadingSpinner,
 };
 
-export { icon, image };
+export { AppIcon, AppImage };

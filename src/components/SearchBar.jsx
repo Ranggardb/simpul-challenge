@@ -1,5 +1,5 @@
 import React from 'react';
-import { icon } from '../assets/asset-lists';
+import { AppIcon } from '../assets/asset-lists';
 
 function SearchBar() {
   return (
@@ -11,7 +11,7 @@ function SearchBar() {
           placeholder="Search"
         />
         <div className="absolute inset-y-0 right-[58px] flex items-center pointer-events-none">
-          <img className="w-3 h-3" src={icon.search} alt="" />
+          <img className="w-3 h-3" src={AppIcon.search} alt="" />
         </div>
       </form>
     </div>
